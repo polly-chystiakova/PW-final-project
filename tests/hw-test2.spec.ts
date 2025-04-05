@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 
+
 test('test', async ({ page }) => {
   await page.goto('https://practicesoftwaretesting.com/');
   await page.locator('[data-test="product-01JR2P9RFXVMCA4QCQGJACPAWJ"]').click();
