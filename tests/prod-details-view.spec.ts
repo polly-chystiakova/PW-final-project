@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test';
 
 
-test('test', async ({ page }) => {
-  await page.goto('https://practicesoftwaretesting.com/');
+test('should display product details to user', async ({ page }) => {
+  await page.goto('/');
   await page.locator('[data-test="product-01JR51TSVF7323XSWJMYXXPW45"]').click();
   expect(page.url()).toContain('https://practicesoftwaretesting.com/product');
   await expect(page.locator('[data-test="product-name"]')).toHaveText('Combination Pliers');
