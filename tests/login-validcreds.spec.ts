@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test';
 
 
-test('test', async ({ page }) => {
-  await page.goto('https://practicesoftwaretesting.com/auth/login');
+test('should allow user to login with valid creds', async ({ page }) => {
+  await page.goto('/auth/login');
   await page.locator('[data-test="email"]').click();
   await page.locator('[data-test="email"]').fill('customer@practicesoftwaretesting.com');
   await page.locator('[data-test="password"]').click();

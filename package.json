@@ -1,0 +1,22 @@
+{
+  "name": "pw-final-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/polly-chystiakova/PW-final-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/polly-chystiakova/PW-final-project/issues"
+  },
+  "homepage": "https://github.com/polly-chystiakova/PW-final-project#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.51.1",
+    "@types/node": "^22.14.0"
+  }
+}
