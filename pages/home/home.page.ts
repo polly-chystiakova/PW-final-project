@@ -9,16 +9,44 @@ export class HomePage extends BasePage {
     readonly productName: Locator = this.page.getByTestId('product-name');
     readonly productPrice: Locator = this.page.getByTestId('product-price');
     readonly filters: FilterFragment = new FilterFragment(this.page);
-  
-    
+      
     async goto(): Promise<void> {
-      const responsePromise = this.page.waitForResponse((response) =>
-        response.url().includes('/products?between=price,1,100&page=1')
-        && response.status() === 200
-        && response.request().method() === 'GET',
-      );
-      await this.page.goto(this.pagePath);
-      await responsePromise;
+    await this.page.goto(this.pagePath);
+     }
+     getProductByName(name: string): Locator {
+      return this.page.getByTestId('product-name').filter({ hasText: name });
+    }
+    
+    async clickOnProductByName(name: string): Promise<void> {
+      await this.getProductByName(name).click();
+    }
+    
+    getUnitPrice(): Locator {
+      return this.page.getByTestId('unit-price');
+    }
+    
+    getAddToCartButton(): Locator {
+      return this.page.getByTestId('add-to-cart');
+    }
+    
+    getCartQuantity(): Locator {
+      return this.page.getByTestId('cart-quantity');
+    }
+    
+    getSuccessAlert(): Locator {
+      return this.page.getByRole('alert');
+    }
+    
+    async goToCart(): Promise<void> {
+      await this.page.getByTestId('nav-cart').click();
+    }
+    
+    getProductTitleInCart(): Locator {
+      return this.page.getByTestId('product-title');
+    }
+    
+    getProceedButton(): Locator {
+      return this.page.getByTestId('proceed-1');
     }
     
     async getProductNames(): Promise<string[]> {
