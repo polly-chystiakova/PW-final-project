@@ -14,7 +14,7 @@ export class HomePage extends BasePage {
     await this.page.goto(this.pagePath);
      }
      getProductByName(name: string): Locator {
-      return this.page.getByTestId('product-name').filter({ hasText: name });
+      return this.productName.filter({ hasText: name });
     }
     
     async clickOnProductByName(name: string): Promise<void> {
