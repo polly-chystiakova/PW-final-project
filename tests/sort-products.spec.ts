@@ -1,5 +1,4 @@
 import test from '@playwright/test';
-import { LoginPage } from '../pages/login.page';
 import { HomePage } from '../pages/home/home.page';
 import { dataSortType } from '../pages/testData/dataSortOptions';
 
