@@ -1,16 +1,7 @@
-import { test, expect } from '@playwright/test';
-import { LoginPage } from '../pages/login.page';
-import * as dotenv from 'dotenv';
+import { expect } from '@playwright/test';
+import { test } from '../pages/fixtures/loggedInPage.fixture';
 
-dotenv.config();
-
-test('should allow user to login with valid creds', async ({ page }) => {
-  const loginPage = new LoginPage(page);
-
-  await loginPage.goto();
-  await loginPage.login(process.env.TEST_EMAIL!, process.env.TEST_PASSWORD!);
-
-  await expect(page).toHaveURL('https://practicesoftwaretesting.com/account');
-  await expect(page.getByTestId('page-title')).toHaveText('My account');
-  await expect(page.getByTestId('nav-menu')).toHaveText('Jane Doe');
+test('user should be logged in', async ({ loggedInPage }) => {
+  await expect(loggedInPage.getByTestId('page-title')).toHaveText('My account');
+  await expect(loggedInPage.getByTestId('nav-menu')).toHaveText('Anna1 Smith1');
 });
