@@ -36,7 +36,7 @@ test('user can complete checkout flow', async ({ homePage, billingPage }) => {
     cardNumber: '1111-1111-1111-1111',
     CVVInput: '111',
     expirationDate: '08/2025',
-    cardHolderName: 'Kabuta Kabuta',
+    cardHolderName: 'Anna1 Smith1',
   });
 
   await billingPage.finishPayment();

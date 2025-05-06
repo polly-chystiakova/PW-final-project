@@ -1,4 +1,4 @@
-import { test as base } from '@playwright/test';
+import { test as base } from '../../pages/fixtures/loggedInPage.fixture';
 import type { Page } from '@playwright/test';
 import { LoginPage } from '../../pages/login.page';
 import { HomePage } from '../../pages/home/home.page';
@@ -18,7 +18,7 @@ export const test = base.extend<Fixtures>({
     const loginPage = new LoginPage(page);
     await loginPage.goto();
     await loginPage.login(process.env.TEST_EMAIL!, process.env.TEST_PASSWORD!);
-    await page.waitForURL('https://practicesoftwaretesting.com/account');
+    await page.waitForURL('/account');
     await use(page);
   },
 
