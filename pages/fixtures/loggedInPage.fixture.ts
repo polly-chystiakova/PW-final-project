@@ -13,7 +13,7 @@ export const test = base.extend<LoggedInPageFixture>({
     const loginPage = new LoginPage(page);
     await loginPage.goto();
     await loginPage.login(process.env.TEST_EMAIL!, process.env.TEST_PASSWORD!);
-    await page.waitForURL('https://practicesoftwaretesting.com/account');
+    await page.waitForURL('/account');
     
     await use(page);
   },

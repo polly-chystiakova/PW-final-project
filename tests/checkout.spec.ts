@@ -1,5 +1,6 @@
 import { test } from '../pages/fixtures/combined.fixtures';
 import { expect } from '@playwright/test';
+test.use({ storageState: 'playwright/.auth/user.json' });
 
 test('user can complete checkout flow', async ({ homePage, billingPage }) => {
   await homePage.goto();

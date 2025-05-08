@@ -1,5 +1,6 @@
 import { test } from '../pages/fixtures/homePage.fixture';
 import { expect } from '@playwright/test';
+test.use({ storageState: 'playwright/.auth/user.json' });
 
 
 test('should add product to cart', async ({ homePage }) => {
