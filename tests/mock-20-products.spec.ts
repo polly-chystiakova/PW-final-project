@@ -1,7 +1,5 @@
 import { test, expect } from '@playwright/test';
 
-test.use({ storageState: 'playwright/.auth/user.json' });
-
 test('mock 20 products', async ({ page }) => {
   const fakeProducts = Array.from({ length: 20 }, (_, i) => ({
     id: i + 1,
