@@ -1,3 +1,6 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import { defineConfig, devices } from '@playwright/test';
 
 /**
@@ -22,16 +25,31 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: [
+    ['html', { open: 'never' }],
+    ['dot'],
+    ['json', { outputFile: 'test-results/report.json' }],
+    ['@testomatio/reporter/lib/adapter/playwright.js',
+      {
+        apiKey: process.env.TESTOMATIO,
+      },
+    ],
+  ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: 'https://practicesoftwaretesting.com/',
     testIdAttribute: 'data-test',
+    // Capture screenshot after each test failure.
+    screenshot: 'only-on-failure',
 
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+    // Record trace only when retrying a test for the first time.
     trace: 'on-first-retry',
+
+    // Record video only when retrying a test for the first time.
+    video: 'on-first-retry'
   },
+   // Capture screenshot after each test failure.
 
   /* Configure projects for major browsers */
   projects: [
@@ -43,7 +61,7 @@ export default defineConfig({
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'],
-        storageState: 'playwright/auth/user.json',
+        storageState: 'playwright/.auth/user.json',
        },
       dependencies: ['login-setup'],
     },
