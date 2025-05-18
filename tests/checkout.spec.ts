@@ -1,7 +1,7 @@
 import { test } from '../pages/fixtures/combined.fixtures';
 import { expect } from '@playwright/test';
 
-test('user can complete checkout flow', async ({ homePage, billingPage }) => {
+test('@regression User can complete checkout flow', async ({ homePage, billingPage }) => {
   await test.step('Go to homepage and add product to cart', async () => {
     await homePage.goto();
     await homePage.clickOnProductByName('Combination Pliers');

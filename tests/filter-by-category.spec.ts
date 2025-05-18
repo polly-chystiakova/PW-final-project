@@ -1,7 +1,7 @@
 import { test } from '../pages/fixtures/homePage.fixture';
 import { expect } from '@playwright/test';
 
-test('should add product to cart', async ({ homePage }) => {
+test('@smoke Should add product to cart', async ({ homePage }) => {
   await homePage.goto();
   await homePage.clickOnProductByName('Slip Joint Pliers');
 
