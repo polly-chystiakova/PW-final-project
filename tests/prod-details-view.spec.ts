@@ -1,7 +1,7 @@
 import { test } from '../pages/fixtures/homePage.fixture';
 import { expect } from '@playwright/test';
 
-test('should display product details to user', async ({ homePage }) => {
+test('@smoke Should display product details to user', async ({ homePage }) => {
   await test.step('Go to product details page', async () => {
     await homePage.goto();
     await homePage.clickOnProductByName('Slip Joint Pliers');

@@ -26,7 +26,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
-    ['html', { open: 'never' }],
+    ['html', { outputFolder: 'playwright-report' }],
     ['dot'],
     ['json', { outputFile: 'test-results/report.json' }],
     ['@testomatio/reporter/lib/adapter/playwright.js',
@@ -57,7 +57,16 @@ export default defineConfig({
       name: 'login-setup',
       testMatch: /.*\.uiAuth\.spec\.ts/,
     },
-        
+    {
+      name: 'smoke',
+      testMatch: /.*\.spec\.ts/,
+      grep: /@smoke/,
+    },
+    {
+      name: 'regression',
+      testMatch: /.*\.spec\.ts/,
+      grep: /@regression/,
+    },   
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'],

@@ -1,0 +1,35 @@
+# .github/workflows/regression.yml
+name: Run Regression Tests
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Regression Tests Only
+        run: npx playwright test -g "@regression"
+
+      - name: Upload Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: regression-report
+          path: playwright-report/

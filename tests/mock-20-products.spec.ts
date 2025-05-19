@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('mock 20 products', async ({ page }) => {
+test('@regression Mock 20 products', async ({ page }) => {
   const fakeProducts = Array.from({ length: 20 }, (_, i) => ({
     id: i + 1,
     name: `Fake Product ${i + 1}`,
